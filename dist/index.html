@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مصنع الحلويات — لوحة الإدارة</title>
+<style>
+  :root { --bg:#faf7f0; --card:#fff; --ink:#2b2118; --muted:#8a7a68; --brand:#b45309; --brand2:#92400e; --ok:#15803d; --warn:#b91c1c; --line:#eadfd0; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: "Segoe UI", Tahoma, "Noto Kufi Arabic", "Cairo", Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header { background:linear-gradient(135deg,#b45309,#78350f); color:#fff; padding:28px 20px; text-align:center; }
+  header h1 { margin:0 0 6px; font-size:28px; }
+  header p { margin:0; opacity:.9; }
+  main { max-width:1000px; margin:0 auto; padding:20px 16px 60px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(120,53,15,.06); }
+  .card h2 { margin:0 0 10px; font-size:18px; }
+  .badge { display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px; background:#fef3c7; color:#92400e; border:1px solid #fcd34d; }
+  .badge.open { background:#fee2e2; color:#991b1b; border-color:#fca5a5; }
+  .badge.ok { background:#dcfce7; color:#166534; border-color:#86efac; }
+  .row { display:flex; justify-content:space-between; padding:6px 0; border-top:1px dashed var(--line); font-size:14px; }
+  .row:first-of-type { border-top:none; }
+  .progress { height:10px; background:#f3e8d5; border-radius:999px; overflow:hidden; margin-top:8px; }
+  .progress > div { height:100%; background:linear-gradient(90deg,var(--brand),var(--brand2)); border-radius:999px; }
+  .btn { display:inline-block; margin-top:10px; background:var(--brand); color:#fff; border:none; border-radius:10px; padding:12px 18px; font-size:16px; cursor:pointer; min-height:48px; }
+  .btn:active { transform:scale(.98); }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:20px; }
+  nav { display:flex; gap:8px; justify-content:center; margin:14px 0 0; flex-wrap:wrap; }
+  nav a { color:#fff; border:1px solid rgba(255,255,255,.5); border-radius:999px; padding:6px 14px; text-decoration:none; font-size:14px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🍬 نظام إدارة وتشغيل مصنع الحلويات</h1>
+  <p>شغل اليوم — الإنتاج والنواقص والتحميلات</p>
+  <nav><a href="#orders">الإنتاج</a><a href="#incidents">النواقص</a><a href="#shipments">السيارات</a></nav>
+</header>
+<main>
+  <div class="grid">
+    <section class="card" id="orders">
+      <h2>📦 أوامر الإنتاج <span class="badge">جاري التنفيذ</span></h2>
+      <div class="row"><span>بسبوسة — حلويات شرقية — 1 كجم</span><strong>200 مطلوب</strong></div>
+      <div class="row"><span>منجز: 50</span><strong>متبقي: 150</strong></div>
+      <div class="progress"><div style="width:25%"></div></div>
+      <div class="row"><span>كنافة — حلويات شرقية — 500 جم</span><strong>150 مطلوب</strong></div>
+      <div class="row"><span>منجز: 0</span><strong>متبقي: 150</strong></div>
+      <div class="progress"><div style="width:2%"></div></div>
+      <button class="btn" type="button">سجّل الكمية</button>
+    </section>
+    <section class="card" id="incidents">
+      <h2>⚠️ النواقص المفتوحة <span class="badge open">أولوية حمراء</span></h2>
+      <div class="row"><span>الفئة: خامات</span><strong>كمية: 20</strong></div>
+      <div class="row"><span>نقص سكر للحشو — بلّغ: أحمد (عامل)</span></div>
+      <button class="btn" type="button">تحديد كنقص محلول</button>
+    </section>
+    <section class="card" id="shipments">
+      <h2>🚚 السيارات <span class="badge">جاري التجهيز</span></h2>
+      <div class="row"><span>بسبوسة — موعد التحميل</span><strong>18:00</strong></div>
+      <div class="row"><span>محمّل: 0 / 200</span><strong class="badge">0%</strong></div>
+      <div class="progress"><div style="width:2%"></div></div>
+    </section>
+    <section class="card" id="activity">
+      <h2>📝 سجل الحركات <span class="badge ok">مباشر</span></h2>
+      <div class="row"><span>أحمد (عامل) — بدء أمر إنتاج #1</span><strong>50</strong></div>
+      <div class="row"><span>المدير — مراجعة النقص #1</span><strong>مفتوح</strong></div>
+    </section>
+  </div>
+</main>
+<footer>نسخة عرض ثابتة للمعاينة — يعمل backend Flask + SQLite على Termux.</footer>
+</body>
+</html>
